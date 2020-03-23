@@ -15,7 +15,6 @@
 		44598D6224284867005D033C /* Experience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44598D6124284867005D033C /* Experience.swift */; };
 		44598D64242849E0005D033C /* Experience+ MKAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44598D63242849E0005D033C /* Experience+ MKAnnotation.swift */; };
 		44598D6624284B66005D033C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44598D6524284B66005D033C /* MapViewController.swift */; };
-		44598D6824284B7F005D033C /* ExperienceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44598D6724284B7F005D033C /* ExperienceController.swift */; };
 		44598D6A24284BD1005D033C /* ImageSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44598D6924284BD1005D033C /* ImageSelectionViewController.swift */; };
 		44598D6C24284BED005D033C /* AudioRecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44598D6B24284BED005D033C /* AudioRecorderViewController.swift */; };
 		44598D6E24284C01005D033C /* VideoRecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44598D6D24284C01005D033C /* VideoRecorderViewController.swift */; };
@@ -36,7 +35,6 @@
 		44598D6124284867005D033C /* Experience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Experience.swift; sourceTree = "<group>"; };
 		44598D63242849E0005D033C /* Experience+ MKAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Experience+ MKAnnotation.swift"; sourceTree = "<group>"; };
 		44598D6524284B66005D033C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		44598D6724284B7F005D033C /* ExperienceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceController.swift; sourceTree = "<group>"; };
 		44598D6924284BD1005D033C /* ImageSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectionViewController.swift; sourceTree = "<group>"; };
 		44598D6B24284BED005D033C /* AudioRecorderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorderViewController.swift; sourceTree = "<group>"; };
 		44598D6D24284C01005D033C /* VideoRecorderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoRecorderViewController.swift; sourceTree = "<group>"; };
@@ -81,7 +79,6 @@
 				44F87AFC2428582B00432647 /* Extensions */,
 				44F87AF5242850A600432647 /* Models */,
 				44F87AF32428508500432647 /* View Controllers */,
-				44F87AF42428509600432647 /* Model Controllers */,
 				44598D7324284CF8005D033C /* Helpers */,
 				44598D53242847C6005D033C /* Main.storyboard */,
 				44598D56242847C7005D033C /* Assets.xcassets */,
@@ -109,14 +106,6 @@
 				44598D6D24284C01005D033C /* VideoRecorderViewController.swift */,
 			);
 			path = "View Controllers";
-			sourceTree = "<group>";
-		};
-		44F87AF42428509600432647 /* Model Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				44598D6724284B7F005D033C /* ExperienceController.swift */,
-			);
-			path = "Model Controllers";
 			sourceTree = "<group>";
 		};
 		44F87AF5242850A600432647 /* Models */ = {
@@ -215,7 +204,6 @@
 				44598D7724284F4E005D033C /* ShiftableViewController.swift in Sources */,
 				44598D4E242847C6005D033C /* AppDelegate.swift in Sources */,
 				44598D50242847C6005D033C /* SceneDelegate.swift in Sources */,
-				44598D6824284B7F005D033C /* ExperienceController.swift in Sources */,
 				44598D6624284B66005D033C /* MapViewController.swift in Sources */,
 				44F87AFB2428581000432647 /* UIViewController+InfoAlert.swift in Sources */,
 				44F87AF9242857CD00432647 /* UIImage+Scaling.swift in Sources */,

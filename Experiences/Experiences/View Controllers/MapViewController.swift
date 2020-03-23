@@ -11,6 +11,20 @@ import MapKit
 import AVFoundation
 import CoreLocation
 
+
+// The app flow is to first get the user location from the map view;
+// Then get the image from the image selection VC;
+// Then get the audio from the audio recorder VC;
+// Then get the video from the video recorder VC;
+// In the video VC, it creates an Experience object with all of the properties;
+// The Experience object is then passed back to the map view, which sets the annotation.
+
+// Whenever I try to set any mapView methods, including addAnnotations, the app crashes.
+// Printing values right before the crash shows that the experience object is fully loaded.
+// It seems to have something to do with mapView -- I verified the delegate is set in storyboard.
+// I'm not able to figure out where the problem is.  I even re-watched Dimitri's lesson and Paul Solt's as well.
+
+
 class MapViewController: UIViewController {
     
     var locationManager = CLLocationManager()
@@ -87,8 +101,8 @@ class MapViewController: UIViewController {
     private func updateViews() {
         guard let experience = experience else { return }
         
-//        let region = MKCoordinateRegion(center: experience.coordinate, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
-//        mapView.setRegion(region, animated: false)
+        let region = MKCoordinateRegion(center: experience.coordinate, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+        mapView.setRegion(region, animated: true)
         mapView.addAnnotation(experience)
     }
     
