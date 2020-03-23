@@ -9,6 +9,9 @@
 import UIKit
 
 class AudioRecorderViewController: UIViewController {
+    
+    var picture: UIImage?
+    var experienceTitle: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()

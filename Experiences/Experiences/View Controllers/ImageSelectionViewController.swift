@@ -41,10 +41,12 @@ class ImageSelectionViewController: ShiftableViewController {
     @IBOutlet weak var chooseImageButton: UIButton!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var recordAudioButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        recordAudioButton.isEnabled = false
         titleTextField.delegate = self
         // Do any additional setup after loading the view.
     }
@@ -78,6 +80,13 @@ class ImageSelectionViewController: ShiftableViewController {
         
     }
     
+    @IBAction func recordAudioTapped(_ sender: UIButton) {
+        
+        guard titleTextField.text != nil else { return }
+        performSegue(withIdentifier: "RecordAudioSegue", sender: self)
+    }
+    
+    
     private func updateImage() {
         if let scaledImage = scaledImage {
             imageView.image = filterImage(for: scaledImage)
@@ -89,7 +98,7 @@ class ImageSelectionViewController: ShiftableViewController {
     private func filterImage(for inputImage: CIImage) -> UIImage {
         
         exposureAdjustFilter.inputImage = inputImage
-        exposureAdjustFilter.ev = Float(0.5)
+        exposureAdjustFilter.ev = Float(1.0)
         
         guard let outputImage = exposureAdjustFilter.outputImage else { return UIImage(ciImage: inputImage)}
         guard let renderedImage = context.createCGImage(outputImage, from: CGRect(origin: CGPoint.zero, size: UIImage(ciImage: inputImage).size)) else { return UIImage(ciImage: inputImage)}
@@ -142,6 +151,7 @@ extension ImageSelectionViewController: UIImagePickerControllerDelegate, UINavig
     
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         selectedImage = image
+        recordAudioButton.isEnabled = true
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

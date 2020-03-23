@@ -82,6 +82,9 @@
                                 <rect key="frame" x="80" y="251" width="254" height="53"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <state key="normal" title="Choose an Image"/>
+                                <connections>
+                                    <action selector="selectImage:" destination="WAb-ta-QGp" eventType="touchUpInside" id="DYQ-tj-JaK"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qLz-Iz-voW">
                                 <rect key="frame" x="161" y="523" width="92" height="40"/>
@@ -90,7 +93,7 @@
                                 </constraints>
                                 <state key="normal" title="Record Audio"/>
                                 <connections>
-                                    <segue destination="jbE-Pl-QwX" kind="show" identifier="RecordAudioSegue" id="ySr-CP-PLx"/>
+                                    <action selector="recordAudioTapped:" destination="WAb-ta-QGp" eventType="touchUpInside" id="4zL-CS-8dB"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -115,7 +118,9 @@
                         <outlet property="chooseImageButton" destination="UgN-vn-t0P" id="R2z-Ts-SZZ"/>
                         <outlet property="imageHeightConstraint" destination="KGb-Qz-xLv" id="qN8-Bn-m6j"/>
                         <outlet property="imageView" destination="KGb-Qz-xLv" id="1ry-Bk-pP0"/>
+                        <outlet property="recordAudioButton" destination="qLz-Iz-voW" id="Ofc-xk-fvz"/>
                         <outlet property="titleTextField" destination="Psb-nN-47c" id="f41-od-rDT"/>
+                        <segue destination="jbE-Pl-QwX" kind="show" identifier="RecordAudioSegue" id="VQ0-3o-Lhd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hLS-MI-Pn8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
