@@ -11,17 +11,84 @@ import MapKit
 
 class MapViewController: UIViewController {
     
+    var locationManager = CLLocationManager()
+    private let regionInMeters: Double = 35000.0
+    
     @IBOutlet var mapView: MKMapView!
     @IBOutlet weak var addImageButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        checkLocationServices()
     }
 
     @IBAction func addNewImage(_ sender: UIBarButtonItem) {
         
     }
     
+        private func setupLocationManager() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        }
+        
+        func currentUserLocation() -> CLLocationCoordinate2D {
+            checkLocationServices()
+            guard let currentLocation = locationManager.location?.coordinate else { return CLLocationCoordinate2D() }
+            return currentLocation
+        }
+        private func checkLocationServices() {
+            if CLLocationManager.locationServicesEnabled() {
+                // setup our location manager
+                setupLocationManager()
+                checkLocationAuthorization()
+            } else {
+                print("Location services is turned off")
+                // show alert letting the user know that have to turn it on
+            }
+        }
+        
+        private func centerViewOnUserLocation() {
+            if let location = locationManager.location?.coordinate {
+                let region = MKCoordinateRegion.init(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+            }
+        }
+        
+        private func checkLocationAuthorization() {
+            switch CLLocationManager.authorizationStatus() {
+            case .authorizedWhenInUse:
+                mapView.showsUserLocation = true
+                centerViewOnUserLocation()
+                locationManager.startUpdatingLocation()
+                break
+            case .denied:
+                break
+            case .notDetermined:
+                locationManager.requestWhenInUseAuthorization()
+            case .restricted:
+                break
+            case .authorizedAlways:
+                break
+            @unknown default:
+                preconditionFailure("Future Apple case not covered by app")
+            }
+        }
+    }
+
+    extension MapViewController: CLLocationManagerDelegate {
+
+        func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+            guard let location = locations.last else { return }
+            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            let region = MKCoordinateRegion.init(center: center, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+            mapView.setRegion(region, animated: true)
+        }
+        
+        func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+            checkLocationAuthorization()
+        }
+    
+
     
     /*
     // MARK: - Navigation
