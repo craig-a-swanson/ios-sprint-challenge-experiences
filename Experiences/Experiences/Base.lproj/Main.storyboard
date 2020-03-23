@@ -87,7 +87,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tcG-hc-29H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="691" y="477"/>
+            <point key="canvasLocation" x="301" y="780"/>
         </scene>
         <!--Image Selection View Controller-->
         <scene sceneID="PFH-3U-lqW">
@@ -126,7 +126,7 @@
                                 </constraints>
                                 <state key="normal" title="Record Audio"/>
                                 <connections>
-                                    <action selector="recordAudioTapped:" destination="WAb-ta-QGp" eventType="touchUpInside" id="4zL-CS-8dB"/>
+                                    <action selector="recordAudioTapped:" destination="WAb-ta-QGp" eventType="touchUpInside" id="xBt-BO-mWR"/>
                                 </connections>
                             </button>
                         </subviews>

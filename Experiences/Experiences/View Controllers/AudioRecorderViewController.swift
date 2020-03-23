@@ -12,6 +12,7 @@ import MapKit
 
 class AudioRecorderViewController: UIViewController {
     
+    var mapViewController: MapViewController?
     var userLocation: CLLocationCoordinate2D?
     var picture: Experience.Picture?
     var experienceTitle: String?
@@ -130,6 +131,7 @@ class AudioRecorderViewController: UIViewController {
             videoVC.experienceTitle = experienceTitle
             videoVC.recordingURL = audioRecording
             videoVC.userLocation = userLocation
+            videoVC.mapViewController = mapViewController
         }
      }
 }

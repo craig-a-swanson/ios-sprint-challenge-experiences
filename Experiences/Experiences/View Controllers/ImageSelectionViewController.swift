@@ -14,6 +14,7 @@ import MapKit
 
 class ImageSelectionViewController: ShiftableViewController {
     
+    var mapViewController: MapViewController?
     var userLocation: CLLocationCoordinate2D?
     private let context = CIContext()
     private let exposureAdjustFilter = CIFilter.exposureAdjust()
@@ -85,6 +86,7 @@ class ImageSelectionViewController: ShiftableViewController {
         
         guard titleTextField.text != "" else { return }
         performSegue(withIdentifier: "RecordAudioSegue", sender: self)
+        
     }
     
     
@@ -140,6 +142,8 @@ class ImageSelectionViewController: ShiftableViewController {
             audioRecordingVC.experienceTitle = titleTextField.text
             audioRecordingVC.picture = picture
             audioRecordingVC.userLocation = userLocation
+            audioRecordingVC.mapViewController = mapViewController
+            
         }
      }
     

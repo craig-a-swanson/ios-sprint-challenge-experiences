@@ -20,7 +20,7 @@ class VideoRecorderViewController: UIViewController {
     lazy private var fileOutput = AVCaptureMovieFileOutput()
     var videoURL: URL?
     var player: AVPlayer!
-    var mapViewController = MapViewController()
+    var mapViewController: MapViewController?
     
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet var cameraView: CameraPreviewView!
@@ -58,7 +58,8 @@ class VideoRecorderViewController: UIViewController {
         let videoURL = videoURL,
         let experienceTitle = experienceTitle,
         let picture = picture,
-        let audio = recordingURL else { return }
+        let audio = recordingURL,
+        let mapViewController = mapViewController else { return }
         let video = Experience.Video(videoPost: videoURL)
         mapViewController.experience = Experience(experienceTitle: experienceTitle, geotag: userLocation, picture: picture, video: video, audio: audio)
         navigationController?.popToRootViewController(animated: true)

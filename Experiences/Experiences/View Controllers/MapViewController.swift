@@ -46,7 +46,7 @@ class MapViewController: UIViewController {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         requestCameraPermission()
-        experience = setExperience()
+//        experience = setExperience()
     }
 
     @IBAction func addNewImage(_ sender: UIBarButtonItem) {
@@ -107,6 +107,7 @@ class MapViewController: UIViewController {
             
             userLocation = currentUserLocation()
             imageSelectionVC.userLocation = userLocation
+            imageSelectionVC.mapViewController = self
             
         }
     }
