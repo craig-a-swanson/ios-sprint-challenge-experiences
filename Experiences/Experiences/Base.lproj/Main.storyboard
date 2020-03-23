@@ -190,6 +190,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GkP-QK-mM5" customClass="CameraPreviewView" customModule="Experiences" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Msz-Vc-Z9C">
                                 <rect key="frame" x="167" y="697" width="80" height="80"/>
                                 <constraints>
@@ -197,18 +201,33 @@
                                     <constraint firstAttribute="height" constant="80" id="hi4-iR-sHi"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="recordVideo"/>
+                                <connections>
+                                    <action selector="startStopRecording:" destination="N2J-Jw-uAU" eventType="touchUpInside" id="bQS-4N-rCr"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="ug8-cL-lkE" firstAttribute="bottom" secondItem="Msz-Vc-Z9C" secondAttribute="bottom" constant="85" id="QaQ-F8-sPq"/>
+                            <constraint firstItem="GkP-QK-mM5" firstAttribute="top" secondItem="eFg-gW-ajB" secondAttribute="top" id="Qad-gp-rte"/>
+                            <constraint firstAttribute="bottom" secondItem="GkP-QK-mM5" secondAttribute="bottom" id="VTK-M1-U7H"/>
+                            <constraint firstItem="GkP-QK-mM5" firstAttribute="trailing" secondItem="ug8-cL-lkE" secondAttribute="trailing" id="cF3-Yd-Xfx"/>
                             <constraint firstItem="Msz-Vc-Z9C" firstAttribute="centerX" secondItem="eFg-gW-ajB" secondAttribute="centerX" id="svb-jo-J0d"/>
+                            <constraint firstItem="GkP-QK-mM5" firstAttribute="leading" secondItem="ug8-cL-lkE" secondAttribute="leading" id="wur-ft-pp6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ug8-cL-lkE"/>
                     </view>
                     <navigationItem key="navigationItem" id="nYI-6L-X0D">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Xpd-oi-5M4"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Xpd-oi-5M4">
+                            <connections>
+                                <action selector="saveVideo:" destination="N2J-Jw-uAU" id="6UM-fr-DHy"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="cameraView" destination="GkP-QK-mM5" id="bSl-QD-Ww9"/>
+                        <outlet property="recordButton" destination="Msz-Vc-Z9C" id="0SK-PL-DD1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qF5-My-Eem" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

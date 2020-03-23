@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import AVFoundation
 
 class MapViewController: UIViewController {
     
@@ -20,6 +21,7 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        requestCameraPermission()
         checkLocationServices()
     }
 
@@ -73,6 +75,29 @@ class MapViewController: UIViewController {
                 preconditionFailure("Future Apple case not covered by app")
             }
         }
+    
+    private func requestCameraPermission() {
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+        case .notDetermined:  // User's first use of the app
+            requestVideoPermission() // request permission
+        case .restricted:  // Parental controls, for instance, are preventing recording
+            preconditionFailure("Video is disabled; please review device restrictions")
+        case .denied:  // The user denied permission to use video
+            preconditionFailure("You are not able to use the app without giving permission via Setting > Privacy > Video")
+        case .authorized: break  // The user previously granted permission
+            
+        @unknown default: // A future new feature from apple that isn't handled now
+            preconditionFailure("A new status code was added that we need to handle")
+        }
+    }
+    
+    private func requestVideoPermission() {
+        AVCaptureDevice.requestAccess(for: .video) { (isGranted) in
+            guard isGranted else {
+                preconditionFailure("UI: Tell the user to enable permissions for Video/Camera")
+            }
+        }
+    }
     }
 
     extension MapViewController: CLLocationManagerDelegate {

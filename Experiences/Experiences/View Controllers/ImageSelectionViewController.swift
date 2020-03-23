@@ -133,8 +133,10 @@ class ImageSelectionViewController: ShiftableViewController {
         if segue.identifier == "RecordAudioSegue" {
             guard let audioRecordingVC = segue.destination as? AudioRecorderViewController else { return }
             
+            guard let image = imageView.image else { return }
+            let picture = Experience.Picture(imagePost: image)
             audioRecordingVC.experienceTitle = titleTextField.text
-            audioRecordingVC.picture = imageView.image
+            audioRecordingVC.picture = picture
         }
      }
     

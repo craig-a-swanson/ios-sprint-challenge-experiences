@@ -11,7 +11,7 @@ import AVFoundation
 
 class AudioRecorderViewController: UIViewController {
     
-    var picture: UIImage?
+    var picture: Experience.Picture?
     var experienceTitle: String?
     var audioRecorder: AVAudioRecorder?
     var recordingURL: URL?
@@ -64,7 +64,7 @@ class AudioRecorderViewController: UIViewController {
                 }
                 
                 print("Recording permission has been granted!")
-                // NOTE: Invite the user to tap record again, since we just interrupted them, and they may not have been ready to record
+                self.startRecording()
             }
         case .denied:
             print("Microphone access has been blocked.")
@@ -122,9 +122,11 @@ class AudioRecorderViewController: UIViewController {
         if segue.identifier == "RecordVideoSegue" {
             guard let videoVC = segue.destination as? VideoRecorderViewController else { return }
             
+            guard let recordingURL = recordingURL else { return }
+            let audioRecording = Experience.Audio(audioPost: recordingURL)
             videoVC.picture = picture
             videoVC.experienceTitle = experienceTitle
-            videoVC.recordingURL = recordingURL
+            videoVC.recordingURL = audioRecording
         }
      }
 }
