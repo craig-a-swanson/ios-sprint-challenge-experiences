@@ -83,9 +83,20 @@
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <state key="normal" title="Choose an Image"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qLz-Iz-voW">
+                                <rect key="frame" x="161" y="523" width="92" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="8HI-aD-hLf"/>
+                                </constraints>
+                                <state key="normal" title="Record Audio"/>
+                                <connections>
+                                    <segue destination="jbE-Pl-QwX" kind="show" identifier="RecordAudioSegue" id="ySr-CP-PLx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="qLz-Iz-voW" firstAttribute="top" secondItem="Psb-nN-47c" secondAttribute="bottom" constant="8" id="CWy-EP-drJ"/>
                             <constraint firstItem="KGb-Qz-xLv" firstAttribute="top" secondItem="j47-8r-LvI" secondAttribute="top" id="OE8-bB-3ag"/>
                             <constraint firstItem="Psb-nN-47c" firstAttribute="leading" secondItem="j47-8r-LvI" secondAttribute="leading" constant="65" id="gEI-J6-r0c"/>
                             <constraint firstItem="j47-8r-LvI" firstAttribute="trailing" secondItem="KGb-Qz-xLv" secondAttribute="trailing" id="i3R-dZ-LUM"/>
@@ -95,6 +106,7 @@
                             <constraint firstItem="Psb-nN-47c" firstAttribute="top" secondItem="KGb-Qz-xLv" secondAttribute="bottom" constant="8" id="mya-Wf-k9l"/>
                             <constraint firstItem="KGb-Qz-xLv" firstAttribute="leading" secondItem="j47-8r-LvI" secondAttribute="leading" id="nvL-Tn-AVy"/>
                             <constraint firstItem="j47-8r-LvI" firstAttribute="trailing" secondItem="Psb-nN-47c" secondAttribute="trailing" constant="65" id="ofm-c9-42M"/>
+                            <constraint firstItem="qLz-Iz-voW" firstAttribute="centerX" secondItem="fGQ-y8-Bty" secondAttribute="centerX" id="v6s-ci-7BO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="j47-8r-LvI"/>
                     </view>
@@ -109,6 +121,85 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hLS-MI-Pn8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1750.7246376811595" y="83.705357142857139"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="JCh-D2-2yc">
+            <objects>
+                <viewController id="jbE-Pl-QwX" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RoK-cH-7Bm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nn1-ha-q6x">
+                                <rect key="frame" x="107" y="427" width="200" height="42"/>
+                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="cKl-tP-hkg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Record Audio">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <state key="selected" title="Stop Recording">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fie-vk-wPC">
+                                <rect key="frame" x="143" y="494" width="128" height="39"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <state key="normal" title="Record Video"/>
+                                <connections>
+                                    <segue destination="N2J-Jw-uAU" kind="show" identifier="RecordVideoSegue" id="Ow2-uM-4Xf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="nn1-ha-q6x" firstAttribute="centerX" secondItem="RoK-cH-7Bm" secondAttribute="centerX" id="KWu-7E-HXy"/>
+                            <constraint firstItem="Fie-vk-wPC" firstAttribute="centerX" secondItem="RoK-cH-7Bm" secondAttribute="centerX" id="ayy-0A-t89"/>
+                            <constraint firstItem="Fie-vk-wPC" firstAttribute="top" secondItem="nn1-ha-q6x" secondAttribute="bottom" constant="25" id="ctX-3G-3XH"/>
+                            <constraint firstItem="nn1-ha-q6x" firstAttribute="centerY" secondItem="RoK-cH-7Bm" secondAttribute="centerY" id="pZg-FB-oIQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Qxk-Rm-jk3"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="LjX-gI-sGK"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vik-9W-bmF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2441" y="84"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="7zp-cU-abH">
+            <objects>
+                <viewController id="N2J-Jw-uAU" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eFg-gW-ajB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Msz-Vc-Z9C">
+                                <rect key="frame" x="167" y="697" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="6Pa-hI-LWM"/>
+                                    <constraint firstAttribute="height" constant="80" id="hi4-iR-sHi"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="recordVideo"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ug8-cL-lkE" firstAttribute="bottom" secondItem="Msz-Vc-Z9C" secondAttribute="bottom" constant="85" id="QaQ-F8-sPq"/>
+                            <constraint firstItem="Msz-Vc-Z9C" firstAttribute="centerX" secondItem="eFg-gW-ajB" secondAttribute="centerX" id="svb-jo-J0d"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ug8-cL-lkE"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="nYI-6L-X0D">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Xpd-oi-5M4"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qF5-My-Eem" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3180" y="91"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nI9-yz-P8Z">
@@ -129,4 +220,7 @@
             <point key="canvasLocation" x="137.68115942028987" y="83.705357142857139"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="recordVideo" width="256" height="256"/>
+    </resources>
 </document>
