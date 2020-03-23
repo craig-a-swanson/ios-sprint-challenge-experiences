@@ -8,9 +8,11 @@
 
 import UIKit
 import AVFoundation
+import MapKit
 
 class VideoRecorderViewController: UIViewController {
     
+    var userLocation: CLLocationCoordinate2D?
     var picture: Experience.Picture?
     var experienceTitle: String?
     var recordingURL: Experience.Audio?
@@ -18,6 +20,7 @@ class VideoRecorderViewController: UIViewController {
     lazy private var fileOutput = AVCaptureMovieFileOutput()
     var videoURL: URL?
     var player: AVPlayer!
+    var mapViewController = MapViewController()
     
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet var cameraView: CameraPreviewView!
@@ -51,7 +54,14 @@ class VideoRecorderViewController: UIViewController {
         }
         
     @IBAction func saveVideo(_ sender: UIBarButtonItem) {
-        
+        guard let userLocation = userLocation,
+        let videoURL = videoURL,
+        let experienceTitle = experienceTitle,
+        let picture = picture,
+        let audio = recordingURL else { return }
+        let video = Experience.Video(videoPost: videoURL)
+        mapViewController.experience = Experience(experienceTitle: experienceTitle, geotag: userLocation, picture: picture, video: video, audio: audio)
+        navigationController?.popToRootViewController(animated: true)
     }
         
         // MARK: - Methods
@@ -63,7 +73,7 @@ class VideoRecorderViewController: UIViewController {
                 print("Handled other tap states: \(tapGesture.state)")
             }
         }
-        
+ 
         func playMovie(url: URL) {
             player = AVPlayer(url: url)
             

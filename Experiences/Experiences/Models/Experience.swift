@@ -35,7 +35,11 @@ class Experience: NSObject {
     }
     
     struct Video {
+        var videoPost: URL
         
+        init(videoPost: URL) {
+            self.videoPost = videoPost
+        }
     }
     
     struct Audio {

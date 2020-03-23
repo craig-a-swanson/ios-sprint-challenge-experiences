@@ -12,7 +12,7 @@ import  MapKit
 extension Experience: MKAnnotation {
     
     var coordinate: CLLocationCoordinate2D {
-        return geotag
+        geotag
     }
     
     var title: String? {

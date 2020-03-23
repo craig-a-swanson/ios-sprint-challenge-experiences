@@ -10,9 +10,11 @@ import UIKit
 import Photos
 import CoreImage
 import CoreImage.CIFilterBuiltins
+import MapKit
 
 class ImageSelectionViewController: ShiftableViewController {
     
+    var userLocation: CLLocationCoordinate2D?
     private let context = CIContext()
     private let exposureAdjustFilter = CIFilter.exposureAdjust()
     private var selectedImage: UIImage? {
@@ -137,6 +139,7 @@ class ImageSelectionViewController: ShiftableViewController {
             let picture = Experience.Picture(imagePost: image)
             audioRecordingVC.experienceTitle = titleTextField.text
             audioRecordingVC.picture = picture
+            audioRecordingVC.userLocation = userLocation
         }
      }
     

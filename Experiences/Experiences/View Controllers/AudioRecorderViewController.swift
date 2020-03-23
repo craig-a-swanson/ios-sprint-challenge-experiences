@@ -8,9 +8,11 @@
 
 import UIKit
 import AVFoundation
+import MapKit
 
 class AudioRecorderViewController: UIViewController {
     
+    var userLocation: CLLocationCoordinate2D?
     var picture: Experience.Picture?
     var experienceTitle: String?
     var audioRecorder: AVAudioRecorder?
@@ -127,6 +129,7 @@ class AudioRecorderViewController: UIViewController {
             videoVC.picture = picture
             videoVC.experienceTitle = experienceTitle
             videoVC.recordingURL = audioRecording
+            videoVC.userLocation = userLocation
         }
      }
 }

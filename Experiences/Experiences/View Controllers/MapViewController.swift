@@ -13,7 +13,13 @@ import AVFoundation
 class MapViewController: UIViewController {
     
     var locationManager = CLLocationManager()
+    var userLocation: CLLocationCoordinate2D?
     private let regionInMeters: Double = 35000.0
+    var experience: Experience? {
+        didSet {
+            updateViews()
+        }
+    }
     
     @IBOutlet var mapView: MKMapView!
     @IBOutlet weak var addImageButton: UIBarButtonItem!
@@ -21,6 +27,7 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: "ExperienceAnnotationView")
         requestCameraPermission()
         checkLocationServices()
     }
@@ -98,6 +105,12 @@ class MapViewController: UIViewController {
             }
         }
     }
+    
+    private func updateViews() {
+        guard let experience = experience else { return }
+        
+        mapView.addAnnotation(experience)
+    }
     }
 
     extension MapViewController: CLLocationManagerDelegate {
@@ -112,17 +125,28 @@ class MapViewController: UIViewController {
         func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
             checkLocationAuthorization()
         }
-    
 
-    
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ImageSelectionSegue" {
+            guard let imageSelectionVC = segue.destination as? ImageSelectionViewController else { return }
+            
+            userLocation = currentUserLocation()
+            imageSelectionVC.userLocation = userLocation
+            
+        }
     }
-    */
+}
 
+extension MapViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard let experience = annotation as? Experience else { return nil }
+        
+        guard let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "ExperienceAnnotationView", for: experience) as? MKMarkerAnnotationView else {
+            preconditionFailure("Missing the registered map annotation view")
+        }
+        return annotationView
+    }
 }
