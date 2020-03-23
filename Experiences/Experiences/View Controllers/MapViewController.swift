@@ -45,34 +45,28 @@ class MapViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: "ExperienceAnnotationView")
         requestCameraPermission()
-        checkLocationServices()
+        experience = setExperience()
     }
 
     @IBAction func addNewImage(_ sender: UIBarButtonItem) {
         
     }
-    
-    private func checkLocationServices() {
-        if CLLocationManager.locationServicesEnabled() {
-
-        } else {
-            print("Location services is turned off")
-            // show alert letting the user know that have to turn it on
+        func setExperience() -> Experience {
+            let currentLocation = (locationManager.location?.coordinate)!
+            let experienceTitle = "Dog"
+            let picture = Experience.Picture(imagePost: UIImage(named: "recordVideo")!)
+            let video = Experience.Video(videoPost: URL(string: "myURL")!)
+            let audio = Experience.Audio(audioPost: URL(string: "myotherURL")!)
+            
+            let newExperience = Experience(experienceTitle: experienceTitle, geotag: currentLocation, picture: picture, video: video, audio: audio)
+            
+            return newExperience
         }
-    }
-        
+    
         func currentUserLocation() -> CLLocationCoordinate2D {
-            checkLocationServices()
             guard let currentLocation = locationManager.location?.coordinate else { return CLLocationCoordinate2D() }
             return currentLocation
-        }
-        
-        private func centerViewOnUserLocation() {
-            if let location = locationManager.location?.coordinate {
-                let region = MKCoordinateRegion.init(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
-            }
         }
     
     private func requestCameraPermission() {
@@ -98,12 +92,9 @@ class MapViewController: UIViewController {
         }
     }
     
-    private func updateViews() {
-        guard let experience = experience else { return }
-        
-        let region = MKCoordinateRegion(center: experience.coordinate, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
-        mapView.setRegion(region, animated: true)
-        mapView.addAnnotation(experience)
+    func updateViews() {
+        guard let myExperience = experience else { return }
+        mapView.addAnnotation(myExperience)
     }
     
 

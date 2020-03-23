@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		440B87FA24293A490020E372 /* ExperienceMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440B87F924293A490020E372 /* ExperienceMapViewController.swift */; };
 		44598D4E242847C6005D033C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44598D4D242847C6005D033C /* AppDelegate.swift */; };
 		44598D50242847C6005D033C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44598D4F242847C6005D033C /* SceneDelegate.swift */; };
 		44598D55242847C6005D033C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44598D53242847C6005D033C /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		440B87F924293A490020E372 /* ExperienceMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceMapViewController.swift; sourceTree = "<group>"; };
 		44598D4A242847C6005D033C /* Experiences.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Experiences.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44598D4D242847C6005D033C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44598D4F242847C6005D033C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				44598D6524284B66005D033C /* MapViewController.swift */,
+				440B87F924293A490020E372 /* ExperienceMapViewController.swift */,
 				44598D6924284BD1005D033C /* ImageSelectionViewController.swift */,
 				44598D6B24284BED005D033C /* AudioRecorderViewController.swift */,
 				44598D6D24284C01005D033C /* VideoRecorderViewController.swift */,
@@ -202,6 +205,7 @@
 				44598D7024284C75005D033C /* CameraPreviewView.swift in Sources */,
 				44598D6C24284BED005D033C /* AudioRecorderViewController.swift in Sources */,
 				44598D7724284F4E005D033C /* ShiftableViewController.swift in Sources */,
+				440B87FA24293A490020E372 /* ExperienceMapViewController.swift in Sources */,
 				44598D4E242847C6005D033C /* AppDelegate.swift in Sources */,
 				44598D50242847C6005D033C /* SceneDelegate.swift in Sources */,
 				44598D6624284B66005D033C /* MapViewController.swift in Sources */,
