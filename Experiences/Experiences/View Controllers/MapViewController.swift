@@ -12,12 +12,17 @@ import MapKit
 class MapViewController: UIViewController {
     
     @IBOutlet var mapView: MKMapView!
-    @IBOutlet weak var addImageButton: UIButton!
+    @IBOutlet weak var addImageButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
+    @IBAction func addNewImage(_ sender: UIBarButtonItem) {
+        
+    }
+    
+    
     /*
     // MARK: - Navigation
 
