@@ -9,6 +9,10 @@
 import UIKit
 
 class VideoRecorderViewController: UIViewController {
+    
+    var picture: UIImage?
+    var experienceTitle: String?
+    var recordingURL: URL?
 
     override func viewDidLoad() {
         super.viewDidLoad()

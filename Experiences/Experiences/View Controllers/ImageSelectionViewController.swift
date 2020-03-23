@@ -48,7 +48,6 @@ class ImageSelectionViewController: ShiftableViewController {
         
         recordAudioButton.isEnabled = false
         titleTextField.delegate = self
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func selectImage(_ sender: Any) {
@@ -82,7 +81,7 @@ class ImageSelectionViewController: ShiftableViewController {
     
     @IBAction func recordAudioTapped(_ sender: UIButton) {
         
-        guard titleTextField.text != nil else { return }
+        guard titleTextField.text != "" else { return }
         performSegue(withIdentifier: "RecordAudioSegue", sender: self)
     }
     

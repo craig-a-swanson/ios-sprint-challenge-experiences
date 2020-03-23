@@ -127,10 +127,10 @@
             </objects>
             <point key="canvasLocation" x="1750.7246376811595" y="83.705357142857139"/>
         </scene>
-        <!--View Controller-->
+        <!--Audio Recorder View Controller-->
         <scene sceneID="JCh-D2-2yc">
             <objects>
-                <viewController id="jbE-Pl-QwX" sceneMemberID="viewController">
+                <viewController id="jbE-Pl-QwX" customClass="AudioRecorderViewController" customModule="Experiences" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RoK-cH-7Bm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -149,13 +149,16 @@
                                 <state key="selected" title="Stop Recording">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="startStopRecording:" destination="jbE-Pl-QwX" eventType="touchUpInside" id="kge-Om-jxX"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fie-vk-wPC">
                                 <rect key="frame" x="143" y="494" width="128" height="39"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                 <state key="normal" title="Record Video"/>
                                 <connections>
-                                    <segue destination="N2J-Jw-uAU" kind="show" identifier="RecordVideoSegue" id="Ow2-uM-4Xf"/>
+                                    <action selector="recordVideoButtonTapped:" destination="jbE-Pl-QwX" eventType="touchUpInside" id="MRi-Cz-MwH"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -169,15 +172,20 @@
                         <viewLayoutGuide key="safeArea" id="Qxk-Rm-jk3"/>
                     </view>
                     <navigationItem key="navigationItem" id="LjX-gI-sGK"/>
+                    <connections>
+                        <outlet property="recordAudioButton" destination="nn1-ha-q6x" id="szd-Ig-5cz"/>
+                        <outlet property="recordVideoButton" destination="Fie-vk-wPC" id="jfK-Hc-ogd"/>
+                        <segue destination="N2J-Jw-uAU" kind="show" identifier="RecordVideoSegue" id="Dzz-cr-uVb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vik-9W-bmF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2441" y="84"/>
         </scene>
-        <!--View Controller-->
+        <!--Video Recorder View Controller-->
         <scene sceneID="7zp-cU-abH">
             <objects>
-                <viewController id="N2J-Jw-uAU" sceneMemberID="viewController">
+                <viewController id="N2J-Jw-uAU" customClass="VideoRecorderViewController" customModule="Experiences" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eFg-gW-ajB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -204,7 +212,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qF5-My-Eem" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3180" y="91"/>
+            <point key="canvasLocation" x="3170" y="84"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nI9-yz-P8Z">

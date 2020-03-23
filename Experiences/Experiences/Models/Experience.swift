@@ -27,7 +27,11 @@ class Experience: NSObject {
     
     
     struct Picture {
+        var imagePost: UIImage
         
+        init(imagePost: UIImage) {
+            self.imagePost = imagePost
+        }
     }
     
     struct Video {
@@ -35,6 +39,10 @@ class Experience: NSObject {
     }
     
     struct Audio {
+        var audioPost: URL
         
+        init(audioPost: URL) {
+            self.audioPost = audioPost
+        }
     }
 }
