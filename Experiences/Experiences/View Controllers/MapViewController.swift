@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import AVFoundation
+import CoreLocation
 
 class MapViewController: UIViewController {
     
@@ -26,7 +27,10 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: "ExperienceAnnotationView")
         requestCameraPermission()
         checkLocationServices()
@@ -36,50 +40,24 @@ class MapViewController: UIViewController {
         
     }
     
-        private func setupLocationManager() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    private func checkLocationServices() {
+        if CLLocationManager.locationServicesEnabled() {
+
+        } else {
+            print("Location services is turned off")
+            // show alert letting the user know that have to turn it on
         }
+    }
         
         func currentUserLocation() -> CLLocationCoordinate2D {
             checkLocationServices()
             guard let currentLocation = locationManager.location?.coordinate else { return CLLocationCoordinate2D() }
             return currentLocation
         }
-        private func checkLocationServices() {
-            if CLLocationManager.locationServicesEnabled() {
-                // setup our location manager
-                setupLocationManager()
-                checkLocationAuthorization()
-            } else {
-                print("Location services is turned off")
-                // show alert letting the user know that have to turn it on
-            }
-        }
         
         private func centerViewOnUserLocation() {
             if let location = locationManager.location?.coordinate {
                 let region = MKCoordinateRegion.init(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
-            }
-        }
-        
-        private func checkLocationAuthorization() {
-            switch CLLocationManager.authorizationStatus() {
-            case .authorizedWhenInUse:
-                mapView.showsUserLocation = true
-                centerViewOnUserLocation()
-                locationManager.startUpdatingLocation()
-                break
-            case .denied:
-                break
-            case .notDetermined:
-                locationManager.requestWhenInUseAuthorization()
-            case .restricted:
-                break
-            case .authorizedAlways:
-                break
-            @unknown default:
-                preconditionFailure("Future Apple case not covered by app")
             }
         }
     
@@ -109,22 +87,11 @@ class MapViewController: UIViewController {
     private func updateViews() {
         guard let experience = experience else { return }
         
+//        let region = MKCoordinateRegion(center: experience.coordinate, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+//        mapView.setRegion(region, animated: false)
         mapView.addAnnotation(experience)
     }
-    }
-
-    extension MapViewController: CLLocationManagerDelegate {
-
-        func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-            guard let location = locations.last else { return }
-            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-            let region = MKCoordinateRegion.init(center: center, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
-            mapView.setRegion(region, animated: true)
-        }
-        
-        func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-            checkLocationAuthorization()
-        }
+    
 
     // MARK: - Navigation
 
@@ -140,13 +107,23 @@ class MapViewController: UIViewController {
     }
 }
 
-extension MapViewController: MKMapViewDelegate {
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard let experience = annotation as? Experience else { return nil }
-        
-        guard let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "ExperienceAnnotationView", for: experience) as? MKMarkerAnnotationView else {
-            preconditionFailure("Missing the registered map annotation view")
-        }
-        return annotationView
+extension MapViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.last else { return }
+        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let region = MKCoordinateRegion.init(center: center, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+        mapView.setRegion(region, animated: true)
     }
+}
+
+extension MapViewController: MKMapViewDelegate {
+//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+//        guard let experience = annotation as? Experience else { return nil }
+//
+//        guard let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "ExperienceAnnotationView", for: experience) as? MKMarkerAnnotationView else {
+//            preconditionFailure("Missing the registered map annotation view")
+//        }
+//        return annotationView
+//    }
 }

@@ -15,10 +15,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaA-89-eJC">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oG5-cV-aNE">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="6rr-Ti-YPd"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Csw-ZW-QCC"/>
                                 </connections>
                             </mapView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Mh-Ur-Xqa">
@@ -36,20 +36,20 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eaA-89-eJC" secondAttribute="bottom" id="BuE-R6-6e7"/>
-                            <constraint firstItem="eaA-89-eJC" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="DKt-kK-dJv"/>
-                            <constraint firstItem="eaA-89-eJC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Haf-Qu-YmH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oG5-cV-aNE" secondAttribute="trailing" id="GMs-Kg-Lpy"/>
                             <constraint firstItem="5Mh-Ur-Xqa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Sd9-Zk-Qfc"/>
                             <constraint firstAttribute="trailing" secondItem="5Mh-Ur-Xqa" secondAttribute="trailing" id="TDb-Qr-Rl9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5Mh-Ur-Xqa" secondAttribute="bottom" id="WB1-Bg-C2e"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eaA-89-eJC" secondAttribute="trailing" id="ugc-QE-Nea"/>
+                            <constraint firstItem="oG5-cV-aNE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="cFN-Es-dY3"/>
+                            <constraint firstItem="5Mh-Ur-Xqa" firstAttribute="top" secondItem="oG5-cV-aNE" secondAttribute="bottom" id="d6e-iB-IwA"/>
+                            <constraint firstItem="oG5-cV-aNE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ieU-lI-5fJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="3iT-E2-ma7"/>
                     <connections>
                         <outlet property="addImageButton" destination="RGT-Yb-Mum" id="kNo-Cu-FNK"/>
-                        <outlet property="mapView" destination="eaA-89-eJC" id="WeH-7h-lDj"/>
+                        <outlet property="mapView" destination="oG5-cV-aNE" id="f1G-LS-hVx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
