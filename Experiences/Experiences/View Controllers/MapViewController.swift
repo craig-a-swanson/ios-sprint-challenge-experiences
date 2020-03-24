@@ -19,12 +19,6 @@ import CoreLocation
 // In the video VC, it creates an Experience object with all of the properties;
 // The Experience object is then passed back to the map view, which sets the annotation.
 
-// Whenever I try to set any mapView methods, including addAnnotations, the app crashes.
-// Printing values right before the crash shows that the experience object is fully loaded.
-// It seems to have something to do with mapView -- I verified the delegate is set in storyboard.
-// I'm not able to figure out where the problem is.  I even re-watched Dimitri's lesson and Paul Solt's as well.
-
-
 class MapViewController: UIViewController {
     
     var locationManager = CLLocationManager()
