@@ -101,14 +101,20 @@ class VideoRecorderViewController: UIViewController {
         
         // MARK: - Set up Camera
         private func setupCamera() {
-            let camera = bestcamera()
+            guard let camera = bestcamera() else { return }
             let microphone = bestMicrophone()
             
             // there is a "begin" to start and a "commit" to end.
             captureSession.beginConfiguration()
-            
             guard let cameraInput = try? AVCaptureDeviceInput(device: camera) else {
-                preconditionFailure("Cannot create an input from the camera, but we should do something better than crashing")
+                
+                let alert = UIAlertController(title: "No Usable Camera", message: "Your device does not have a camer that is compatible with the application", preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "OK", style: .default) { (_) in
+                    return
+                })
+                present(alert, animated: true)
+                return
             }
             
             // Add input
@@ -139,17 +145,24 @@ class VideoRecorderViewController: UIViewController {
         }
         
         // MARK: - Best Camera and Microphone
-        private func bestcamera() -> AVCaptureDevice {
-            // try the better camera first if the user has it
-            if let device = AVCaptureDevice.default(.builtInUltraWideCamera, for: .video, position: .back) {
-                return device
-            }
-            // if the user doesn't have the better one, use the standard camera
-            if let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) {
-                return device
-            }
-            preconditionFailure("No cameras on device match the specs that we need.")
+    private func bestcamera() -> AVCaptureDevice? {
+        // try the better camera first if the user has it
+        if let device = AVCaptureDevice.default(.builtInUltraWideCamera, for: .video, position: .back) {
+            return device
         }
+        // if the user doesn't have the better one, use the standard camera
+        if let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) {
+            return device
+        } else {
+            let alert = UIAlertController(title: "No Camera", message: "There is not a suitable camera available to use.", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .destructive)
+            alert.addAction(action)
+            present(alert, animated: true)
+            recordButton.isEnabled = false
+            return nil
+        }
+    }
+        
         
         private func bestMicrophone() -> AVCaptureDevice {
             if let device = AVCaptureDevice.default(for: .audio) {
